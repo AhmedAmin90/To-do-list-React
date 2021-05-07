@@ -8,3 +8,10 @@
 p {
     width: 80%;
 }
+
+button {
+    margin: 2px;
+    width: auto;
+    height: 25px;
+    align-self: center;
+}

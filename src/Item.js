@@ -5,7 +5,7 @@ class Item extends Component {
     render(){
         return(
             <div className="Item">
-                <p className="Item-text">Item</p>
+                <p className="Item-text">{this.props.text}</p>
                 <button>Edit</button>
                 <button>Delete</button>
             </div>
