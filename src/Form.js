@@ -2,9 +2,11 @@ import React , {Component} from 'react'
 
 class Form extends Component {
     state = {
-        text: "",
-        priority: 1 ,
-        edit: false
+        title: "",
+        body: "",
+        priority: "" ,
+        deadLine : "",
+        done: false
     }
 
     handleChange = (e)=>{
@@ -14,25 +16,44 @@ class Form extends Component {
     }
 
     render() {
+        function getDate(){
+            let today = new Date();
+        
+          document.getElementById("date").value = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
+        }
         return(
             <form>
-                <label htmlFor="text">Add Item</label>
+                <label htmlFor="title">Add Task</label>
                 <input 
-                type="text"
-                value={this.state.text}
+                type="title"
+                value={this.state.title}
                 onChange={this.handleChange}
-                name="text"
-                id="text"
+                name="title"
+                id="title"
                 />
                 <label htmlFor="priority">Priority</label>
+                <select value={this.state.priority}
+                        onChange={this.handleChange}
+                        name="priority"
+                        id="priority"
+                >
+                    <option>Important</option>
+                    <option>Meidum</option>
+                    <option>Normal</option>
+                </select>
+                <label htmlFor="body">Task Details</label>
                 <input 
-                type="number"
-                min={1}
-                max={4}
-                value={this.state.priority}
+                type="text"
+                value={this.state.body}
                 onChange={this.handleChange}
-                name="priority"
-                id="priority"
+                name="body"
+                id="body"
+                />
+                <label>DeadLine <i className="fas fa-hourglass-half"></i></label>
+                <input
+                type="date"
+                value={this.state.deadLine}
+                onChange={this.handleChange}
                 />
                 <button> Submit </button>
             </form>

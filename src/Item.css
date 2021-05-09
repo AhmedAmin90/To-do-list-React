@@ -1,17 +1,32 @@
-.Item {
+.Item-title{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+    align-items: center;
     width: 500px;
     margin: 10px auto;
 }
 
 p {
-    width: 80%;
+    width: 25%;
 }
 
+.Item-details {
+    font-size: 15px;
+    padding: 5px;
+}
 button {
     margin: 2px;
     width: auto;
     height: 25px;
     align-self: center;
+}
+
+.fa-arrow-circle-down {
+    color: green;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.hide{
+    display: none;
 }
