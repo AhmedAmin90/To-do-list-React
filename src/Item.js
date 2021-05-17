@@ -11,10 +11,8 @@ class Item extends Component {
     }
     render(){
         const seeDetails = ()=>{  
-            const itemBody = document.querySelectorAll('.Item-body');
-            itemBody.forEach(item => {
-                item.classList.toggle('hide');
-            })
+            const itemBody = document.getElementById(`${this.props.id}`);
+            itemBody.classList.toggle('hide')
         }
 
         const isDone = this.props.done ? <i className="fas fa-check-double"> Done !</i>  : <div className="Item-underprogress"> <i className="fas fa-hourglass-end"> Underprogress </i>  <button onClick={this.makeDone}> Make it Done !</button></div> ;
@@ -26,7 +24,7 @@ class Item extends Component {
                  <button>Edit</button>
                  <button onClick={this.deleteTask}>Delete</button>
               </div>
-              <div className="Item-body hide">
+              <div className="Item-body hide" id={this.props.id}>
                  <p className="Item-text"> Task details: {this.props.body}</p>
                  <p className="Item-text">Dead line: {this.props.date}</p>
                  <p className="Item-text">Priority: {this.props.priority}</p>
