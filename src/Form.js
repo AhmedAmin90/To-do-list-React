@@ -22,6 +22,18 @@ class Form extends Component {
         })
     }
 
+    cancel = (e)=>{
+        document.querySelector('form').classList.add('hide');
+        this.setState({
+            title: "",
+            body: "",
+            priority: "Important" ,
+            deadLine : "",
+            done: false}
+            );
+
+    }
+
 
     handleSubmit = (e)=>{
         e.preventDefault();
@@ -79,6 +91,7 @@ class Form extends Component {
                 id="deadLine"
                 />
                 <button onClick={this.clearValues} className="Form-submit"> Submit </button>
+                <button onClick={this.cancel} className="Form-cancel"> Cancel</button>
             </form>
             </div>
         )
