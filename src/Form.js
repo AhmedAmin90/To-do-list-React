@@ -1,4 +1,5 @@
 import React , {Component} from 'react'
+import './Form.css'
 
 class Form extends Component {
     state = {
@@ -55,7 +56,7 @@ class Form extends Component {
                 value={this.state.deadLine}
                 onChange={this.handleChange}
                 />
-                <button> Submit </button>
+                <button className="Form-submit"> Submit </button>
             </form>
         )
     }
