@@ -11,18 +11,20 @@ class List extends Component {
     }
 
     delete = (id)=>{
-        const deletedElem = this.state.tasks.find( task => task.id === id);
-        this.setState({tasks: [...this.state.tasks.splice(1, deletedElem)]})
-
-        // Another way:
-        // const deletedElem = this.state.tasks.filter( task => task.id !== id);
-        // this.setState({tasks: [...deletedElem]})
+        const deletedElem = this.state.tasks.filter( task => task.id !== id);
+        this.setState({tasks: [...deletedElem]})
     }
 
     done = (id)=>{
         let deletedElem = this.state.tasks.find( task => task.id === id);
         deletedElem.done = true;
-        this.setState({tasks: [...this.state.tasks]})
+        this.setState({tasks: [...this.state.tasks]});
+
+    }
+
+    edit = (id)=>{
+        let deletedElem = this.state.tasks.find( task => task.id === id);
+        
     }
 
     render(){

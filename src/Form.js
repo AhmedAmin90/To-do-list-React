@@ -11,24 +11,41 @@ class Form extends Component {
         done: false
     }
 
+    showForm = (e)=>{
+        document.querySelector('form').classList.remove('hide');
+        document.querySelector('.Form-show').classList.add('hide')
+    }
+
     handleChange = (e)=>{
         this.setState({
             [e.target.name] : e.target.value
         })
     }
 
+
     handleSubmit = (e)=>{
         e.preventDefault();
         let newTask = {id: uuidv4(), title: this.state.title, body: this.state.body , priority: this.state.priority, deadLine: this.state.deadLine, done: false}
-        this.props.addNew(newTask)
+        this.props.addNew(newTask);
+        this.setState({
+        title: "",
+        body: "",
+        priority: "Important" ,
+        deadLine : "",
+        done: false}
+        );
+        document.querySelector('form').classList.add('hide');
+        document.querySelector('.Form-show').classList.remove('hide')
     }
 
     render() {
         return(
-            <form onSubmit={this.handleSubmit}>
+            <div>
+                <button className="Form-show" onClick={this.showForm}>Add Task </button>
+            <form className="hide" onSubmit={this.handleSubmit}>
                 <label htmlFor="title">Add Task</label>
                 <input 
-                type="title"
+                type="text"
                 value={this.state.title}
                 onChange={this.handleChange}
                 name="title"
@@ -59,9 +76,11 @@ class Form extends Component {
                 value={this.state.deadLine}
                 onChange={this.handleChange}
                 name="deadLine"
+                id="deadLine"
                 />
-                <button className="Form-submit"> Submit </button>
+                <button onClick={this.clearValues} className="Form-submit"> Submit </button>
             </form>
+            </div>
         )
     }
 }
