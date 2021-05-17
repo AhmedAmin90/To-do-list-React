@@ -35,4 +35,25 @@ label{
     margin-top: 5px;
 }
 
+textarea{
+    height: 100px;
+}
 
+.Item-underprogress{
+    display: flex;
+    flex-direction: column;
+    height: 60px;
+    justify-content: space-between;
+}
+
+.Item-underprogress > button {
+    background-color:teal;
+    cursor: pointer;
+    width: 50%;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 5px;
+    color: white;
+    font-size: large;
+}

@@ -45,13 +45,14 @@ class Form extends Component {
                     <option>Normal</option>
                 </select>
                 <label htmlFor="body">Task Details</label>
-                <input 
+                <textarea 
                 type="text"
                 value={this.state.body}
                 onChange={this.handleChange}
                 name="body"
                 id="body"
-                />
+                >
+                </textarea>
                 <label htmlFor="deadLine">DeadLine <i className="fas fa-hourglass-half"></i></label>
                 <input
                 type="date"

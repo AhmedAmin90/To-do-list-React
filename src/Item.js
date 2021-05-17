@@ -5,6 +5,10 @@ class Item extends Component {
     deleteTask = (e)=>{
         this.props.delete(this.props.id)
     }
+
+    makeDone =(e)=>{
+        this.props.taskDone(this.props.id)
+    }
     render(){
         const seeDetails = ()=>{  
             const itemBody = document.querySelectorAll('.Item-body');
@@ -13,8 +17,7 @@ class Item extends Component {
             })
         }
 
-        const isDone = this.props.done ? <i className="fas fa-check-double"> Done !</i>  : <i className="fas fa-hourglass-end"> Underprogress </i>;
-
+        const isDone = this.props.done ? <i className="fas fa-check-double"> Done !</i>  : <div className="Item-underprogress"> <i className="fas fa-hourglass-end"> Underprogress </i>  <button onClick={this.makeDone}> Make it Done !</button></div> ;
         return(
             <div className="Item">
              <div className="Item-title">
@@ -27,8 +30,7 @@ class Item extends Component {
                  <p className="Item-text"> Task details: {this.props.body}</p>
                  <p className="Item-text">Dead line: {this.props.date}</p>
                  <p className="Item-text">Priority: {this.props.priority}</p>
-                 <p className="Item-text">Status: {isDone}</p>
-                 <button> Make it Done !</button>
+                 {isDone}
               </div>
             </div>
         )
