@@ -16,6 +16,11 @@ input , select  {
     margin: 5px;
 }
 
+select {
+    height: 32px;
+    width: 78%;
+}
+
 label{
     margin: 2px;
 }

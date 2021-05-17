@@ -6,14 +6,12 @@
     margin: 10px auto;
 }
 
-p {
-    width: 25%;
-}
-
 .Item-details {
     font-size: 15px;
     padding: 5px;
+    width: 25%;
 }
+
 button {
     margin: 2px;
     width: auto;
@@ -29,4 +27,11 @@ button {
 
 .hide{
     display: none;
+}
+
+.Item-body{
+    border: orange 1px solid;
+    width: 50%;
+    margin: 5px auto;
+    padding: 5px;
 }

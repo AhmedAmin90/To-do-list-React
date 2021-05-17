@@ -1,11 +1,12 @@
 import React , {Component} from 'react'
 import './Form.css'
+import { v4 as uuidv4 } from 'uuid';
 
 class Form extends Component {
     state = {
         title: "",
         body: "",
-        priority: "" ,
+        priority: "Important" ,
         deadLine : "",
         done: false
     }
@@ -16,14 +17,15 @@ class Form extends Component {
         })
     }
 
+    handleSubmit = (e)=>{
+        e.preventDefault();
+        let newTask = {id: uuidv4(), title: this.state.title, body: this.state.body , priority: this.state.priority, deadLine: this.state.deadLine, done: false}
+        this.props.addNew(newTask)
+    }
+
     render() {
-        function getDate(){
-            let today = new Date();
-        
-          document.getElementById("date").value = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
-        }
         return(
-            <form>
+            <form onSubmit={this.handleSubmit}>
                 <label htmlFor="title">Add Task</label>
                 <input 
                 type="title"
@@ -50,11 +52,12 @@ class Form extends Component {
                 name="body"
                 id="body"
                 />
-                <label>DeadLine <i className="fas fa-hourglass-half"></i></label>
+                <label htmlFor="deadLine">DeadLine <i className="fas fa-hourglass-half"></i></label>
                 <input
                 type="date"
                 value={this.state.deadLine}
                 onChange={this.handleChange}
+                name="deadLine"
                 />
                 <button className="Form-submit"> Submit </button>
             </form>
