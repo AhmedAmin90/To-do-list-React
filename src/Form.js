@@ -37,17 +37,24 @@ class Form extends Component {
 
     handleSubmit = (e)=>{
         e.preventDefault();
-        let newTask = {id: uuidv4(), title: this.state.title, body: this.state.body , priority: this.state.priority, deadLine: this.state.deadLine, done: false}
-        this.props.addNew(newTask);
-        this.setState({
-        title: "",
-        body: "",
-        priority: "Important" ,
-        deadLine : "",
-        done: false}
-        );
-        document.querySelector('form').classList.add('hide');
-        document.querySelector('.Form-show').classList.remove('hide')
+        if (!this.state.body || !this.state.title){ 
+           document.querySelector('.Form-error').classList.remove('hide')
+        }
+        else {
+            let newTask = {id: uuidv4(), title: this.state.title, body: this.state.body , priority: this.state.priority, deadLine: this.state.deadLine, done: false}
+            this.props.addNew(newTask);
+            this.setState({
+            title: "",
+            body: "",
+            priority: "Important" ,
+            deadLine : "",
+            done: false}
+            );
+            document.querySelector('form').classList.add('hide');
+            document.querySelector('.Form-show').classList.remove('hide');
+            document.querySelector('.Form-error').classList.add('hide')
+        }
+       
     }
 
     render() {
@@ -55,6 +62,7 @@ class Form extends Component {
             <div>
                 <button className="Form-show" onClick={this.showForm}>Add Task </button>
             <form className="hide" onSubmit={this.handleSubmit}>
+                <p className="Form-error  hide">Must Fill Title and Description</p>
                 <label htmlFor="title">Add Task</label>
                 <input 
                 type="text"

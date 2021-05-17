@@ -71,3 +71,9 @@ textarea{
     color: white;
     font-weight: bold;
 }
+
+.Form-error {
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+}
