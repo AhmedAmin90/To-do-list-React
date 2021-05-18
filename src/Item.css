@@ -87,4 +87,15 @@ button {
 .Item-task-p {
     border: 1px solid rgba(0, 0, 0, 0.336);
     padding: 10px;
+    background-color:olivedrab;
+    color: white;
+}
+
+.Item-edit-btn {
+    width: 50px;
+    height: 35px;
+    background-color:thistle;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
 }

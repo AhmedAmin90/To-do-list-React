@@ -64,6 +64,7 @@ class Item extends Component {
                 // Task:
                 showContent = 
                 <div>
+                
                 <div className="Item-task-text"> Task details:<p className="Item-task-p"> {this.props.body}</p> </div>
                 <div className="Item-task-text">Dead line: <p className="Item-task-p">{this.props.date}</p> </div>
                 <div className="Item-task-text">Priority: <p className="Item-task-p"> {this.props.priority}</p></div>
@@ -126,7 +127,7 @@ class Item extends Component {
                  
               </div>
               <div className="Item-body hide" id={this.props.id}>
-              <button className="Item-edit-btn hide" onClick={this.editForm}>{isEdited}</button>
+              <button className="Item-edit-btn" onClick={this.editForm}>{isEdited}</button>
                 {showContent}
               </div>
             </div>
