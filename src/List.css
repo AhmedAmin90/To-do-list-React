@@ -1,3 +1,10 @@
 .edit-btn{
     background-color: red;
 }
+
+h1{
+    border-bottom: turquoise 1px solid;
+    width: 50%;
+    margin: 20px auto;
+    padding-bottom: 10px;
+}

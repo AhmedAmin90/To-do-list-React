@@ -18,7 +18,8 @@ class List extends Component {
 
     done = (id)=>{
         let doneElem = this.state.tasks.find( task => task.id === id);
-        doneElem.done = true;
+        // Toggle between done and not done !
+        doneElem.done = !doneElem.done;
         this.setState({tasks: [...this.state.tasks]});
 
     }
@@ -38,6 +39,7 @@ class List extends Component {
     render(){
         return (
             <div>
+                <h1> SIMPLE TO DO LIST- React Based </h1>
                 {this.state.tasks.map(task=> 
                     <Item key={task.id}
                      id={task.id} 
