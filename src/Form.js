@@ -12,8 +12,9 @@ class Form extends Component {
     }
 
     showForm = (e)=>{
-        document.querySelector('form').classList.remove('hide');
-        document.querySelector('.Form-show').classList.add('hide')
+        document.querySelector('.Form-task-form').classList.remove('hide');
+        document.querySelector('.Form-show').classList.add('hide');
+        document.querySelector('.Form-error').classList.add('hide');
     }
 
     handleChange = (e)=>{
@@ -23,7 +24,9 @@ class Form extends Component {
     }
 
     cancel = (e)=>{
-        document.querySelector('form').classList.add('hide');
+        document.querySelector('.Form-task-form').classList.add('hide');
+        document.querySelector('.Form-show').classList.remove('hide');
+        
         this.setState({
             title: "",
             body: "",
@@ -60,7 +63,7 @@ class Form extends Component {
         return(
             <div>
                 <button className="Form-show" onClick={this.showForm}>Add Task </button>
-            <form className="hide" onSubmit={this.handleSubmit}>
+            <form className="Form-task-form hide" onSubmit={this.handleSubmit}>
                 <p className="Form-error  hide">Must Fill Title and Description</p>
                 <label htmlFor="title">Add Task</label>
                 <input 

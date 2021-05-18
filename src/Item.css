@@ -35,3 +35,7 @@ button {
     margin: 5px auto;
     padding: 5px;
 }
+
+.Item-edit-form{
+    width: 75%;
+}

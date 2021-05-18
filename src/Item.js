@@ -3,7 +3,12 @@ import './Item.css'
 
 class Item extends Component {
     state = {
-        edited: false
+        edited: false,
+        title: this.props.title,
+        body: this.props.body,
+        priority: this.props.priority ,
+        deadLine : this.props.date,
+        done: false
     }
     deleteTask = (e)=>{
         this.props.delete(this.props.id)
@@ -21,11 +26,32 @@ class Item extends Component {
         this.setState({edited : !this.state.edited})
     }
 
+    handleChange = (e)=>{
+        this.setState({
+            [e.target.name] : e.target.value
+        })
+    }
+
+    updateTask = (e)=>{
+        e.preventDefault();
+        this.props.update(this.props.id , {
+            edited: false,
+            title: this.state.title,
+            body: this.state.body,
+            priority: this.state.priority ,
+            deadLine : this.state.deadLine,
+            done: false
+        })
+        this.setState({edited: false})
+    }
+
+
     render(){
+
         const seeDetails = ()=>{  
             const itemBody = document.getElementById(`${this.props.id}`);
             itemBody.classList.toggle('hide');
-            document.querySelector('.Item-edit-btn').classList.toggle('hide')
+            document.querySelector('.Item-edit-btn').classList.remove('hide')
         }
         const isDone = this.props.done ? <i className="fas fa-check-double"> Done !</i>  : <div className="Item-underprogress"> <i className="fas fa-hourglass-end"> Underprogress </i>  <button onClick={this.makeDone}> Make it Done !</button></div> ;
         const isEdited = this.state.edited? "Cancel" : "Edit"
@@ -40,8 +66,8 @@ class Item extends Component {
                 </div>
             }
             else {
-                showContent = <div>
-                    <form>
+                showContent = <div className="Item-edit-div">
+                <form onSubmit={this.updateTask} className="Item-edit-form">
                 <p className="Form-error  hide">Must Fill Title and Description</p>
                 <label htmlFor="title">Add Task</label>
                 <input 
@@ -78,7 +104,8 @@ class Item extends Component {
                 name="deadLine"
                 id="deadLine"
                 />
-                    </form>
+                <button>Update</button>
+                </form>
                 </div>
                 
             }

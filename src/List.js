@@ -17,23 +17,38 @@ class List extends Component {
     }
 
     done = (id)=>{
-        let deletedElem = this.state.tasks.find( task => task.id === id);
-        deletedElem.done = true;
+        let doneElem = this.state.tasks.find( task => task.id === id);
+        doneElem.done = true;
         this.setState({tasks: [...this.state.tasks]});
 
     }
 
-    // edit = (id)=>{
-    //     let deletedElem = this.state.tasks.find( task => task.id === id);
-    //     let btn = document.createElement('button').classList = 'edit-btn';
-    //     document.querySelector('.Item-body').appendChild(btn);
-    // }
+    edit = (id , editedTask)=>{
+        const updatedTasks = this.state.tasks.map(task=> {
+            if (task.id === id) {
+                return {...task , title: editedTask.title, body: editedTask.body, priority: editedTask.priority , deadLine: editedTask.deadLine }
+
+            }
+            return task
+
+        })
+        this.setState({tasks: updatedTasks})
+    }
 
     render(){
         return (
             <div>
                 {this.state.tasks.map(task=> 
-                    <Item key={task.id} id={task.id} title={task.title} body={task.body} date={task.deadLine} priority={task.priority} done={task.done} delete={this.delete} taskDone={this.done}/>
+                    <Item key={task.id}
+                     id={task.id} 
+                     title={task.title}
+                     body={task.body} 
+                     date={task.deadLine} 
+                     priority={task.priority} 
+                     done={task.done} 
+                     delete={this.delete} 
+                     taskDone={this.done} 
+                     update={this.edit}/>
                 )}
                 <Form addNew={this.addItem}/>
             </div>
