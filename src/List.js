@@ -1,6 +1,7 @@
 import React , {Component} from 'react'
 import Item from './Item'
 import Form from './Form'
+import './List.css'
 class List extends Component {
     state = {
         tasks : []
@@ -22,10 +23,11 @@ class List extends Component {
 
     }
 
-    edit = (id)=>{
-        let deletedElem = this.state.tasks.find( task => task.id === id);
-        
-    }
+    // edit = (id)=>{
+    //     let deletedElem = this.state.tasks.find( task => task.id === id);
+    //     let btn = document.createElement('button').classList = 'edit-btn';
+    //     document.querySelector('.Item-body').appendChild(btn);
+    // }
 
     render(){
         return (

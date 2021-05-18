@@ -31,7 +31,6 @@ class Form extends Component {
             deadLine : "",
             done: false}
             );
-
     }
 
 
@@ -48,13 +47,13 @@ class Form extends Component {
             body: "",
             priority: "Important" ,
             deadLine : "",
-            done: false}
+            done: false
+            }
             );
             document.querySelector('form').classList.add('hide');
             document.querySelector('.Form-show').classList.remove('hide');
             document.querySelector('.Form-error').classList.add('hide')
         }
-       
     }
 
     render() {
@@ -73,9 +72,9 @@ class Form extends Component {
                 />
                 <label htmlFor="priority">Priority</label>
                 <select value={this.state.priority}
-                        onChange={this.handleChange}
-                        name="priority"
-                        id="priority"
+                onChange={this.handleChange}
+                name="priority"
+                id="priority"
                 >
                     <option>Important</option>
                     <option>Meidum</option>
