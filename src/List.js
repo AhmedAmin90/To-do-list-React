@@ -8,15 +8,17 @@ class List extends Component {
     }
 
     componentDidMount(){
-            this.setState({tasks: JSON.parse(localStorage.getItem('array') || '[]')})
-        }
+        this.setState({tasks: JSON.parse(localStorage.getItem('array') || '[]')});
+    }
+
     addItem = (newTask)=> {
         this.setState({tasks: [...this.state.tasks, newTask]})
     }
 
     delete = (id)=>{
         const deletedElem = this.state.tasks.filter( task => task.id !== id);
-        this.setState({tasks: [...deletedElem]})
+        this.setState({tasks: [...deletedElem]});
+        localStorage.setItem('array', JSON.stringify(deletedElem));
     }
 
     done = (id)=>{
@@ -36,12 +38,13 @@ class List extends Component {
             return task
 
         })
-        this.setState({tasks: updatedTasks})
+        this.setState({tasks: updatedTasks});
+        localStorage.setItem('array', JSON.stringify(updatedTasks));
     }
 
     saveTask = () => {
         localStorage.setItem('array', JSON.stringify(this.state.tasks));
-      }
+    }
 
     render(){
       

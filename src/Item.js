@@ -21,7 +21,7 @@ class Item extends Component {
     }
 
     edit = (e)=> {
-        this.props.editTask(this.props.id)
+        this.props.editTask(this.props.id);
     }
 
     updateTask = (e)=>{
