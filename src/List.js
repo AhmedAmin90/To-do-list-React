@@ -7,6 +7,9 @@ class List extends Component {
         tasks : []
     }
 
+    componentDidMount(){
+            this.setState({tasks: JSON.parse(localStorage.getItem('array') || '[]')})
+        }
     addItem = (newTask)=> {
         this.setState({tasks: [...this.state.tasks, newTask]})
     }
@@ -36,11 +39,17 @@ class List extends Component {
         this.setState({tasks: updatedTasks})
     }
 
+    saveTask = () => {
+        localStorage.setItem('array', JSON.stringify(this.state.tasks));
+      }
+
     render(){
+      
+        
         return (
             <div>
                 <h1> SIMPLE TO DO LIST- React Based </h1>
-                {this.state.tasks.map(task=> 
+                {this.state.tasks.map(task => 
                     <Item key={task.id}
                      id={task.id} 
                      title={task.title}
@@ -52,7 +61,10 @@ class List extends Component {
                      taskDone={this.done} 
                      update={this.edit}/>
                 )}
-                <Form addNew={this.addItem}/>
+                
+                <Form 
+                addNew={this.addItem} 
+                saveTasks={this.saveTask}/>
             </div>
         )
     }

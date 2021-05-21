@@ -36,8 +36,12 @@ class Form extends Component {
             );
     }
 
+    handleSave = (e)=> {
+        this.props.saveTasks();
+    }
 
-    handleSubmit = (e)=>{
+
+    handleSubmit = (e)=> {
         e.preventDefault();
         if (!this.state.body || !this.state.title){ 
            document.querySelector('.Form-error').classList.remove('hide')
@@ -45,6 +49,8 @@ class Form extends Component {
         else {
             let newTask = {id: uuidv4(), title: this.state.title, body: this.state.body , priority: this.state.priority, deadLine: this.state.deadLine, done: false}
             this.props.addNew(newTask);
+            this.handleSave();
+            console.log(JSON.parse(localStorage.getItem('array') || '[]'))
             this.setState({
             title: "",
             body: "",
@@ -55,7 +61,7 @@ class Form extends Component {
             );
             document.querySelector('form').classList.add('hide');
             document.querySelector('.Form-show').classList.remove('hide');
-            document.querySelector('.Form-error').classList.add('hide')
+            document.querySelector('.Form-error').classList.add('hide');
         }
     }
 
@@ -100,7 +106,7 @@ class Form extends Component {
                 name="deadLine"
                 id="deadLine"
                 />
-                <button onClick={this.clearValues} className="Form-submit"> Submit </button>
+                <button className="Form-submit" > Submit </button>
                 <button onClick={this.cancel} className="Form-cancel"> Cancel</button>
             </form>
             </div>
