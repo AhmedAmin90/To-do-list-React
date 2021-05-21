@@ -11,6 +11,10 @@ class List extends Component {
         this.setState({tasks: JSON.parse(localStorage.getItem('array') || '[]')});
     }
 
+    componentDidUpdate()
+       { localStorage.setItem('array', JSON.stringify(this.state.tasks));}
+    
+
     addItem = (newTask)=> {
         this.setState({tasks: [...this.state.tasks, newTask]})
     }
